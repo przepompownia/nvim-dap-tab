@@ -43,8 +43,8 @@ local function openTabForThread()
     return
   end
 
-  vim.wo.scrolloff = 10
   vim.cmd.tabedit '%'
+  vim.wo.scrolloff = 10
 
   debugWinId = vim.fn.win_getid()
   dapui.open({})
