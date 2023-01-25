@@ -3,6 +3,9 @@ Keep [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) in a separate tab
 
 This simple extension can be useful if you need to keep existing tabs untouched by debugging steps.
 
+After introducing `switchbuf` strategies in [nvim-dap](https://github.com/mfussenegger/nvim-dap) we need to set it to `uselast`
+to allow nvim-dap-tab to work correctly. See `:help dap.defaults`.
+
 After run
 ```lua
 require(dap-tab).setup()
