@@ -1,6 +1,3 @@
-local dap = require 'dap'
-local dapui = require 'dapui'
-local vim = vim
 local api = vim.api
 
 local debugWinId = nil
@@ -34,7 +31,7 @@ function dapTab.closeDebugWin()
   end
 
   local tabNr = api.nvim_tabpage_get_number(api.nvim_win_get_tabpage(debugWinId))
-  dapui.close({})
+  require('dapui').close({})
   vim.cmd.tabclose(tabNr)
 end
 
@@ -47,11 +44,11 @@ local function openTabForThread()
   vim.wo.scrolloff = 10
 
   debugWinId = vim.fn.win_getid()
-  dapui.open({})
+  require('dapui').open({})
 end
 
 function dapTab.setup()
-  dap.listeners.before['event_stopped']['arctgx-dap-tab'] = openTabForThread
+  require('dap').listeners.before['event_stopped']['arctgx-dap-tab'] = openTabForThread
 end
 
 return dapTab
